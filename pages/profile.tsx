@@ -29,19 +29,22 @@ export default function Profile() {
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        if (corbadoSessionToken) {
+        if ("here" + corbadoSessionToken) {
+            console.log(corbadoSessionToken)
             axios.post("/api/proxy", {corbadoSessionToken}, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             })
                 .then(response => {
+                   
                     setUser(response.data.data.user);
                 })
                 .catch(console.error);
         }
     }, [corbadoSessionToken]);
-
+ 
+    console.log(user);
     return (
         <div>
             <h1>Profile Page</h1>

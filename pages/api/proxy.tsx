@@ -12,6 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // @ts-ignore
     const clientInfo: ClientInfo = {userAgent, remoteAddress}
+    console.log("here"+ clientInfo)
     const {corbadoSessionToken} = req.body;
     const projectID: string = process.env.NEXT_PUBLIC_PROJECT_ID as string;
     const apiSecret: string = process.env.API_SECRET as string;
@@ -32,6 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 
         res.status(200).json(response.data);
+        console.log("here" + response.data)
     } catch (error: any) {
         console.error(error);
         // Forward status code from Corbado's API if available, otherwise default to 500
